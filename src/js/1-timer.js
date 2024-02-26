@@ -54,6 +54,7 @@ function startTimer(endTime) {
     if (timeDifference <= 0) {
       clearInterval(timerInterval);
       updateTimerUI(0, 0, 0, 0);
+      document.querySelector('#datetime-picker').disabled = false; 
       return;
     }
     const { days, hours, minutes, seconds } = convertMs(timeDifference);
@@ -75,7 +76,7 @@ document.querySelector('[data-start]').addEventListener('click', () => {
   if (selectedDate) {
     const now = new Date();
     if (selectedDate > now) {
-      document.querySelector('[data-start]').disabled = true;
+      document.querySelector('#datetime-picker').disabled = true;
       startTimer(selectedDate);
     } else {
       iziToast.warning({
