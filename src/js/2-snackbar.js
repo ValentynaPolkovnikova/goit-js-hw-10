@@ -2,18 +2,17 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
 const form = document.querySelector(".form");
-const inputText = document.querySelector(".delay-text");
+const inputText = document.querySelector(".label-form");
 
 function delayText(event) {
-    
+    event.preventDefault();
     const delayValue = parseInt(inputText.value);
     const inputDelay = document.querySelector('input[name="state"]:checked');
 
     if (!inputDelay) {
         return;
     }
-    event.preventDefault();
-
+    
     const promise = new Promise((resolve, reject) => {
         setTimeout(() => {
             if (inputDelay.value === 'fulfilled') {
